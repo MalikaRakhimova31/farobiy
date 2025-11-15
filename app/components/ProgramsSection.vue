@@ -23,7 +23,11 @@
             loading="lazy"
           />
           <div
+<<<<<<< HEAD
             class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+=======
+            class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"
+>>>>>>> dev
           ></div>
           <div class="absolute right-4 bottom-4 left-4">
             <span

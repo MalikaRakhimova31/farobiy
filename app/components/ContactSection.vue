@@ -3,6 +3,10 @@
     id="contact"
     class="from-primary-600 to-primary-800 relative overflow-hidden bg-linear-to-br"
   >
+<<<<<<< HEAD
+=======
+    <!-- Background Pattern -->
+>>>>>>> dev
     <div class="absolute inset-0 opacity-10">
       <div
         class="absolute inset-0"
@@ -129,15 +133,27 @@ const handleSubmit = async () => {
   isSubmitting.value = true;
   submitMessage.value = "";
 
+<<<<<<< HEAD
   await new Promise((resolve) => setTimeout(resolve, 1500));
 
   try {
+=======
+  // Simulate API call
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+
+  try {
+    // Here you would normally send the form data to your backend
+>>>>>>> dev
     console.log("Form submitted:", form.value);
 
     submitSuccess.value = true;
     submitMessage.value =
       "Xabaringiz muvaffaqiyatli yuborildi! / Your message has been sent successfully!";
 
+<<<<<<< HEAD
+=======
+    // Reset form
+>>>>>>> dev
     form.value = {
       name: "",
       phone: "",
@@ -150,6 +166,10 @@ const handleSubmit = async () => {
   } finally {
     isSubmitting.value = false;
 
+<<<<<<< HEAD
+=======
+    // Clear message after 5 seconds
+>>>>>>> dev
     setTimeout(() => {
       submitMessage.value = "";
     }, 5000);
