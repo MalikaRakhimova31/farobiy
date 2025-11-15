@@ -1,17 +1,10 @@
-<<<<<<< HEAD
-=======
 // https://nuxt.com/docs/api/configuration/nuxt-config
->>>>>>> dev
 import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: false },
 
-<<<<<<< HEAD
-  modules: ["@nuxtjs/i18n", "@nuxt/image", "@nuxtjs/color-mode"],
-=======
   modules: ["@nuxtjs/i18n", "@nuxt/image", "@nuxtjs/color-mode" , "motion-v/nuxt"],
->>>>>>> dev
 
   css: ["assets/css/main.css"],
   vite: {
@@ -30,10 +23,6 @@ export default defineNuxtConfig({
       cookieKey: "i18n_redirected",
       redirectOn: "root",
     },
-<<<<<<< HEAD
-=======
-    
->>>>>>> dev
   },
 
   image: {

@@ -1,10 +1,7 @@
 <template>
   <section id="faq" class="bg-gray-50">
     <div class="container">
-<<<<<<< HEAD
-=======
       <!-- Admission Process -->
->>>>>>> dev
       <div class="mb-12 text-center lg:mb-16">
         <h2
           class="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl"
@@ -24,11 +21,7 @@
         >
           <div class="flex items-start space-x-4">
             <div
-<<<<<<< HEAD
-              class="bg-primary-100 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full"
-=======
               class="bg-primary-100 flex h-12 w-12 shrink-0 items-center justify-center rounded-full"
->>>>>>> dev
             >
               <span class="text-primary-600 font-bold">{{
                 String(index).padStart(2, "0")
@@ -46,10 +39,7 @@
         </div>
       </div>
 
-<<<<<<< HEAD
-=======
       <!-- FAQ Questions -->
->>>>>>> dev
       <div class="mb-12 text-center">
         <h3
           class="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl lg:text-4xl"
@@ -73,11 +63,7 @@
           >
             <div class="flex flex-1 items-start space-x-4">
               <div
-<<<<<<< HEAD
-                class="bg-primary-100 mt-1 flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg"
-=======
                 class="bg-primary-100 mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg"
->>>>>>> dev
               >
                 <svg
                   class="text-primary-600 h-5 w-5"
@@ -99,11 +85,7 @@
             </div>
             <svg
               :class="[
-<<<<<<< HEAD
-                'ml-4 h-5 w-5 flex-shrink-0 text-gray-400 transition-transform',
-=======
-                'ml-4 h-5 w-5 flex shrink-0 text-gray-400 transition-transform',
->>>>>>> dev
+                'ml-4 flex h-5 w-5 shrink-0 text-gray-400 transition-transform',
                 openQuestion === index ? 'rotate-180' : '',
               ]"
               fill="none"

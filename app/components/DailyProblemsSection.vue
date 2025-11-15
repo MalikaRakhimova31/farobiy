@@ -17,11 +17,7 @@
       >
         <div class="mb-4 flex items-start space-x-3">
           <div
-<<<<<<< HEAD
-            class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-white/20"
-=======
             class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/20"
->>>>>>> dev
           >
             <span class="text-xl font-bold">{{ index + 1 }}</span>
           </div>
@@ -47,14 +43,9 @@
           <span>{{ $t(`daily.problem${index + 1}.author`) }}</span>
         </div>
 
-<<<<<<< HEAD
-        <div
-          class="absolute top-4 right-4 -z-0 h-20 w-20 rounded-full bg-white/5"
-=======
         <!-- Decorative element -->
         <div
           class="absolute top-4 right-4 z-0 h-20 w-20 rounded-full bg-white/5"
->>>>>>> dev
         ></div>
       </div>
     </div>
