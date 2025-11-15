@@ -43,7 +43,6 @@
           <span>{{ $t(`daily.problem${index + 1}.author`) }}</span>
         </div>
 
-        <!-- Decorative element -->
         <div
           class="absolute top-4 right-4 -z-0 h-20 w-20 rounded-full bg-white/5"
         ></div>

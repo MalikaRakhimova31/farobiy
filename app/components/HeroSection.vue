@@ -1,13 +1,11 @@
 <template>
   <section id="hero" class="relative pt-24 lg:pt-32 pb-16 lg:pb-24 overflow-hidden bg-gradient-to-br from-primary-50 via-white to-green-50">
-    <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-10">
       <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgb(34 197 94) 1px, transparent 0); background-size: 40px 40px;"></div>
     </div>
 
     <div class="container relative">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <!-- Left Content -->
         <div class="space-y-6 lg:space-y-8">
           <div class="inline-block">
             <span class="inline-flex items-center px-4 py-2 rounded-full bg-primary-100 text-primary-700 font-semibold text-sm">
@@ -35,7 +33,6 @@
             </a>
           </div>
 
-          <!-- Stats -->
           <div class="flex flex-wrap gap-8 pt-4">
             <div v-for="stat in stats" :key="stat.value" class="text-center sm:text-left">
               <div class="text-3xl lg:text-4xl font-bold text-primary-600">{{ stat.value }}</div>
@@ -44,7 +41,6 @@
           </div>
         </div>
 
-        <!-- Right Image -->
         <div class="relative">
           <div class="relative rounded-2xl overflow-hidden shadow-2xl">
             <NuxtImg
@@ -53,11 +49,9 @@
               class="w-full h-[500px] lg:h-[600px] object-cover"
               loading="lazy"
             />
-            <!-- Overlay decoration -->
             <div class="absolute inset-0 bg-gradient-to-t from-primary-900/30 to-transparent"></div>
           </div>
 
-          <!-- Floating Card -->
           <div class="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-6 max-w-xs hidden sm:block">
             <div class="flex items-center space-x-4">
               <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">

@@ -1,7 +1,6 @@
 <template>
   <section id="faq" class="bg-gray-50">
     <div class="container">
-      <!-- Admission Process -->
       <div class="mb-12 text-center lg:mb-16">
         <h2
           class="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl"
@@ -39,7 +38,6 @@
         </div>
       </div>
 
-      <!-- FAQ Questions -->
       <div class="mb-12 text-center">
         <h3
           class="mb-4 text-2xl font-bold text-gray-900 sm:text-3xl lg:text-4xl"
