@@ -112,7 +112,7 @@
           <ul class="space-y-3">
             <li class="flex items-start space-x-2">
               <svg
-                class="text-primary-500 mt-0.5 h-5 w-5 flex-shrink-0"
+                class="text-primary-500 mt-0.5 h-5 w-5  flex shrink-0"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
