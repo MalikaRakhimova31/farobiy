@@ -1,45 +1,61 @@
 <script setup lang="ts">
 import { Motion } from "@motionone/vue";
 
-import iconLogo from "../assets/images/logo.png";
-import iconMoon from "../assets/images/moon.png";
+import IconSun from "~/components/icon/IconSun.vue";
+import IconMoon from "~/components/icon/IconMoon.vue";
 
-const { locale, locales, setLocale } = useI18n();
-const mobileMenuOpen = ref(false);
-
+const { locale, locales, setLocale, t } = useI18n();
+const colorMode = useColorMode();
 const currentLocale = computed(() => locale.value);
 const availableLocales = computed(() => locales.value);
 
 const navItems = [
-  { key: "Home", href: "#hero" },
-  { key: "About", href: "#why" },
-  { key: "Programs", href: "#programs" },
-  { key: "Faq", href: "#faq" },
-  { key: "Contact", href: "#contact" },
+  { key: "nav.home", href: "#hero" },
+  { key: "nav.about", href: "#why" },
+  { key: "nav.programs", href: "#programs" },
+  { key: "nav.faq", href: "#faq" },
+  { key: "nav.contact", href: "#contact" },
 ];
+
+const switchLanguage = (code: "uz" | "ru") => {
+  setLocale(code);
+};
+const toggleTheme = async () => {
+  colorMode.preference = colorMode.preference === "dark" ? "light" : "dark";
+  await nextTick();
+};
 </script>
 
 <template>
   <!-- HEADER -->
   <Motion
     tag="header"
-    class="fixed top-0 right-0 left-0 z-50 bg-white/95 shadow-sm backdrop-blur-sm"
+    class="z-40 flex h-15 w-[98vw] items-center justify-between rounded-full bg-[rgba(255,255,255,0.1)] px-2.5 shadow-[0_4px_8px_0_rgba(215,215,215,0.6)] backdrop-blur-[30px] md:w-[80vw] dark:bg-[rgba(42,42,59,0.4)] dark:shadow-[0px_2px_7px_0px_rgba(15,10,39,0.35)]"
     :initial="{ opacity: 0, y: -50 }"
     :animate="{ opacity: 1, y: 0 }"
     :transition="{ duration: 0.6, easing: 'ease-out' }"
   >
-    <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <nav class="w-full px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between lg:h-20">
-        <!-- Logo -->
-        <Motion
-          tag="div"
-          :initial="{ opacity: 0, x: -60 }"
-          :animate="{ opacity: 1, x: 0 }"
-          :transition="{ duration: 0.8 }"
-          class="flex items-center space-x-2"
-        >
-          <img :src="iconLogo" alt="" class="w-44" />
-        </Motion>
+        <ClientOnly>
+          <Motion
+            tag="div"
+            :initial="{ opacity: 0, x: -60 }"
+            :animate="{ opacity: 1, x: 0 }"
+            :transition="{ duration: 0.8 }"
+            class="flex items-center space-x-2"
+          >
+            <img
+              :src="
+                colorMode.preference === 'light'
+                  ? '/logo.png'
+                  : '/logo-white.png'
+              "
+              alt=""
+              class="w-44"
+            />
+          </Motion>
+        </ClientOnly>
 
         <!-- Desktop Navigation -->
         <div class="hidden items-center space-x-8 lg:flex">
@@ -48,79 +64,71 @@ const navItems = [
             :key="item.key"
             tag="a"
             :href="item.href"
-            class="group relative cursor-pointer font-medium text-gray-700 transition-colors duration-200 hover:text-[#009663]"
+            class="group relative cursor-pointer font-medium text-gray-700 transition-colors duration-200 hover:text-[#009663] dark:text-white dark:hover:text-[#00c878]"
             :whileHover="{ scale: 1.05 }"
           >
-            {{ $t(`${item.key}`) }}
+            {{ t(item.key) }}
 
             <span
-              class="absolute -bottom-1 left-0 h-0.5 w-0 bg-[#009663] transition-all duration-300 group-hover:w-full"
+              class="absolute -bottom-1 left-0 h-0.5 w-0 bg-[#009663] transition-all duration-300 group-hover:w-full dark:bg-[#00c878]"
             ></span>
           </Motion>
         </div>
 
-        <!-- Right Controls -->
         <div class="flex items-center space-x-4">
           <!-- Language Switcher -->
-          <div class="flex items-center space-x-2 rounded-3xl bg-gray-100 p-2">
-            <Motion
-              v-for="locale in availableLocales"
-              :key="locale.code"
-              tag="button"
-              @click="setLocale(locale.code)"
-              :class="[
-                'rounded-xl px-3 py-1 text-sm font-medium transition-all',
-                currentLocale === locale.code
-                  ? 'bg-white text-[#009663] shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900',
-              ]"
-              :whileHover="{ scale: 1.05 }"
+          <ClientOnly>
+            <div
+              class="dark:bg-dark-100 flex items-center space-x-1 rounded-3xl bg-gray-100 p-1"
             >
-              {{ locale.code.toUpperCase() }}
-            </Motion>
-          </div>
+              <Motion
+                v-for="localeOption in availableLocales"
+                :key="localeOption.code"
+                tag="button"
+                @click="switchLanguage(localeOption.code)"
+                :class="[
+                  'rounded-xl px-3 py-1 text-sm font-medium transition-all duration-200',
+                  currentLocale === localeOption.code
+                    ? 'bg-white text-[#009663] shadow-sm dark:text-[#00c878]'
+                    : 'text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white',
+                ]"
+                :whileHover="{ scale: 1.05 }"
+                :aria-label="`Switch to ${localeOption.name}`"
+              >
+                {{ localeOption.code.toUpperCase() }}
+              </Motion>
+            </div>
+          </ClientOnly>
 
-          <!-- Contact Btn -->
-          <button
-            class="cursor-pointer rounded-3xl border bg-[#009663] px-6 py-2 text-white hover:bg-[#60b212]"
+          <a
+            href="#contact"
+            class="hover:bg-secondary-900/80 bg-secondary-900 hidden cursor-pointer rounded-3xl px-6 py-2 text-white transition-colors lg:block"
           >
-            Bog’lanish
-          </button>
+            {{ t("nav.contact") }}
+          </a>
 
-          <!-- Theme Mode -->
-          <button class="cursor-pointer rounded-full border p-2">
-            <img :src="iconMoon" alt="" class="h-4 w-4" />
-          </button>
-
-          <!-- Mobile Toggle -->
-          <Motion
-            tag="button"
-            @click="mobileMenuOpen = !mobileMenuOpen"
-            class="p-2 lg:hidden"
-            :whileTap="{ scale: 0.9 }"
-          >
-            <svg
-              class="h-6 w-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          <ClientOnly>
+            <button
+              @click="toggleTheme"
+              class="cursor-pointer rounded-full border p-2 transition-all duration-300 hover:scale-110"
+              :class="
+                colorMode.preference === 'light'
+                  ? 'border-secondary-800 bg-secondary-200 hover:bg-secondary-300'
+                  : 'border-primary-800 hover:bg-primary-300 bg-white'
+              "
+              :title="
+                colorMode.preference === 'light'
+                  ? 'Switch to dark mode'
+                  : 'Switch to light mode'
+              "
             >
-              <path
-                v-if="!mobileMenuOpen"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-              <path
+              <IconSun v-if="colorMode.preference === 'light'" />
+              <IconMoon
                 v-else
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
+                className="stroke-primary-800 fill-primary-800"
               />
-            </svg>
-          </Motion>
+            </button>
+          </ClientOnly>
         </div>
       </div>
     </nav>

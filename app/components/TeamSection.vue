@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { Motion } from "@motionone/vue";
-
 const teamMembers = [
   {
     name: "Azamat Tursunov",
@@ -28,60 +26,59 @@ const teamMembers = [
       "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=600&fit=crop",
   },
 ];
-
-const cardVariants = (index: number) => ({
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.5, delay: index * 0.2 } },
-});
 </script>
 
 <template>
-  <section id="team" class="container bg-white py-20">
-    <div class="mb-12 text-center lg:mb-16">
-      <h2 class="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl">
-        {{ $t("team.title") }}
-      </h2>
-      <p class="mx-auto max-w-2xl text-lg text-gray-600">
-        {{ $t("team.subtitle") }}
-      </p>
-    </div>
-
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 lg:gap-8">
-      <Motion
-        v-for="(member, index) in teamMembers"
-        :key="index"
-        :initial="cardVariants(index).initial"
-        :animate="cardVariants(index).animate"
-        class="group"
+  <section id="team" class="dark:bg-dark-500 bg-white py-20">
+    <div class="container">
+      <div class="mb-12 text-center lg:mb-16">
+        <h2
+          class="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl dark:text-white"
+        >
+          {{ $t("team.title") }}
+        </h2>
+        <p class="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
+          {{ $t("team.subtitle") }}
+        </p>
+      </div>
+      <div
+        class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 xl:grid-cols-5"
       >
-        <!-- Card Image -->
-        <div class="relative mb-4 overflow-hidden rounded-2xl shadow-lg transition-shadow hover:shadow-2xl transform hover:-translate-y-2">
-          <NuxtImg
-            :src="member.image"
-            :alt="member.name"
-            class="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            loading="lazy"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        <div v-for="(member, index) in teamMembers" :key="index" class="group">
+          <div
+            class="relative mb-4 overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl"
+          >
+            <NuxtImg
+              :src="member.image"
+              :alt="member.name"
+              class="h-72 w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+            <div
+              class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            ></div>
+          </div>
+          <div class="text-center">
+            <h3
+              class="mb-1 text-lg font-bold text-gray-900 transition-colors duration-200 dark:text-white"
+            >
+              {{ member.name }}
+            </h3>
+            <p
+              class="text-secondary-900 text-sm font-medium transition-colors duration-200 dark:text-[#00c878]"
+            >
+              {{ $t(`team.position${index + 1}`) }}
+            </p>
+          </div>
         </div>
-
-        <!-- Name & Position -->
-        <div class="text-center">
-          <h3 class="mb-1 text-lg font-bold text-gray-900">
-            {{ member.name }}
-          </h3>
-          <p class="text-[#009663] text-sm font-medium">
-            {{ $t(`team.position${index + 1}`) }}
-          </p>
-        </div>
-      </Motion>
-    </div>
-
-    <!-- View All Button -->
-    <div class="mt-12 text-center">
-      <button class="px-6 py-3 border-2 border-[#009663] text-[#009663] rounded-full font-semibold transition-colors hover:bg-[#009663] hover:text-white">
-        {{ $t("team.viewAll") }}
-      </button>
+      </div>
+      <div class="mt-12 text-center">
+        <button
+          class="border-secondary-900 text-secondary-900 hover:bg-secondary-900 rounded-full border-2 px-8 py-3 font-semibold transition-all duration-300 hover:scale-105 hover:text-white hover:shadow-lg active:scale-95 dark:border-[#00c878] dark:text-[#00c878] dark:hover:bg-[#00c878]"
+        >
+          {{ $t("team.viewAll") }}
+        </button>
+      </div>
     </div>
   </section>
 </template>

@@ -1,11 +1,10 @@
 <template>
-  <div class="min-h-screen bg-white">
+  <div class="min-h-screen">
     <main>
       <HeroSection />
       <WhySection />
-      <DailyProblemsSection />
       <AdvantagesSection />
-      <ProgramsSection />
+      <Slider />
       <TeamSection />
       <FaqSection />
       <ContactSection />

@@ -5,10 +5,10 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
 
   modules: [
-    "@nuxtjs/i18n",
     "@nuxt/image",
     "@nuxtjs/color-mode",
     "motion-v/nuxt",
+    "@nuxtjs/i18n",
   ],
 
   css: ["assets/css/main.css"],
@@ -18,16 +18,22 @@ export default defineNuxtConfig({
 
   i18n: {
     locales: [
-      { code: "uz", iso: "uz-UZ", name: "O'zbekcha" },
-      { code: "en", iso: "en-US", name: "English" },
+      {
+        code: "uz",
+        language: "uz-UZ",
+        name: "O'zbekcha",
+        file: "uz.json",
+      },
+      {
+        code: "ru",
+        language: "ru-RU",
+        name: "Русский",
+        file: "ru.json",
+      },
     ],
+    langDir: "locales",
     defaultLocale: "uz",
     strategy: "no_prefix",
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: "i18n_redirected",
-      redirectOn: "root",
-    },
   },
 
   image: {
@@ -39,12 +45,12 @@ export default defineNuxtConfig({
     head: {
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
-      title: "Jahon School - International Education",
+      title: "Farobiy School - International Education",
       meta: [
         {
           name: "description",
           content:
-            "Jahon School - providing world-class international education with modern teaching methods",
+            "Farobiy School - providing world-class international education with modern teaching methods",
         },
       ],
     },

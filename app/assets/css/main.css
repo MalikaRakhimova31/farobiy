@@ -1,15 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap");
+
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --default-font-family: "Urbanist", sans-serif;
   --font-rubik: "Rubik", sans-serif;
-
+  --font-bricolage: "Bricolage Grotesque", serif;
   --color-extra-pink: #fbf5f9;
   --color-primary-1000: #4b1eaf;
   --color-primary-950: #6736d2;
   --color-primary-900: #7346d5;
-  --color-primary-800: #7f56d9;
+  --color-primary-800: #092741;
   --color-primary-700: #926ddf;
   --color-primary-600: #a386e4;
   --color-primary-500: #b69ee9;
@@ -18,7 +22,7 @@
   --color-primary-200: #e0d6f6;
   --color-primary-100: #ece6f9;
   --color-primary-50: #f8f6fd;
-  --color-secondary-900: #fec30e;
+  --color-secondary-900: #009663;
   --color-secondary-800: #fec822;
   --color-secondary-700: #fed249;
   --color-secondary-600: #fedb70;

@@ -4,34 +4,37 @@ import { Motion } from "@motionone/vue";
 const programs = [
   {
     key: "preschool",
-    image:
-      "/img_1.jpg"
+    image: "/img_1.jpg",
   },
   {
     key: "primary",
-    image:
-      "/img_2.jpg",
+    image: "/img_2.jpg",
   },
   {
     key: "secondary",
-    image:
-     "/img_3.jpg",
+    image: "/img_3.jpg",
   },
   {
     key: "high",
-    image:
-    "/img_4.jpg"
+    image: "/img_4.jpg",
   },
 ];
 
 const cardVariants = (index: number) => ({
   initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.5, delay: index * 0.2 } },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay: index * 0.2 },
+  },
 });
 </script>
 
 <template>
-  <section id="programs" class="from-[#e6f7f1] bg-gradient-to-br to-[#ccefe4] py-20">
+  <section
+    id="programs"
+    class="dark:bg-dark-500 bg-linear-to-br from-[#e6f7f1] to-[#ccefe4] py-20"
+  >
     <div class="container mb-12 text-center lg:mb-16">
       <h2 class="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl">
         {{ $t("programs.title") }}
@@ -47,7 +50,7 @@ const cardVariants = (index: number) => ({
         :key="index"
         :initial="cardVariants(index).initial"
         :animate="cardVariants(index).animate"
-        class="group overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-500 hover:shadow-2xl transform hover:-translate-y-2"
+        class="group transform overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
       >
         <div class="relative h-48 overflow-hidden rounded-t-2xl">
           <NuxtImg
@@ -56,8 +59,9 @@ const cardVariants = (index: number) => ({
             class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
             loading="lazy"
           />
-          <div class="absolute inset-0 bg-linear-to-t from-black/50 to-transparent"></div>
-          
+          <div
+            class="absolute inset-0 bg-linear-to-t from-black/50 to-transparent"
+          ></div>
         </div>
 
         <div class="p-6">
@@ -69,7 +73,7 @@ const cardVariants = (index: number) => ({
           </p> -->
           <a
             href="#contact"
-            class="text-[#009663] hover:text-[#007a50] group inline-flex items-center font-semibold"
+            class="group inline-flex items-center font-semibold text-[#009663] hover:text-[#007a50]"
           >
             {{ $t("hero.cta") }}
             <svg

@@ -1,113 +1,96 @@
 <script setup lang="ts">
-import { h } from "vue";
 import { Motion } from "@motionone/vue";
+import { getWhySectionFeatures } from "~/shared/why-section";
+import type { IconName } from "~/types/why-section";
+import IconClock from "~/components/icon/IconClock.vue";
+import IconGraduation from "~/components/icon/IconGraduation.vue";
+import IconLightning from "~/components/icon/IconLightning.vue";
+import IconCertificate from "~/components/icon/IconCertificate.vue";
+import IconPartnership from "~/components/icon/IconPartnership.vue";
+import IconCareer from "~/components/icon/IconCareer.vue";
+import IconChemistry from "~/components/icon/IconChemistry.vue";
+import IconPhysics from "~/components/icon/IconPhysics.vue";
 
-const features = [
-  {
-    items: [
-      {
-        title: "Rus va o‘zbek guruhlari alohida",
-        desc: "O‘quvchilarni qulaylik uchun til bo‘yicha alohida guruhlarga ajratamiz.",
-        icon: () => h("svg", { fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, [
-          h("path", { "stroke-linecap":"round","stroke-linejoin":"round","stroke-width":"2","d":"M12 6v6l4 2" })
-        ])
-      },
-      {
-        title: "Ta’lim grantlari",
-        desc: "Iqtidorli o‘quvchilar uchun maxsus grant imkoniyatlari mavjud.",
-        icon: () => h("svg", { fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, [
-          h("path", { "stroke-linecap":"round","stroke-linejoin":"round","stroke-width":"2","d":"M12 4.354a4 4 0 110 5.292" })
-        ])
-      }
-    ]
-  },
-  {
-    items: [
-      {
-        title: "Kursga hojat yo‘q",
-        desc: "Farobiyda o‘qishning o‘zi yetarli — qo‘shimcha kurssiz ham natija.",
-        icon: () => h("svg", { fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, [
-          h("path", { "stroke-linecap":"round","stroke-linejoin":"round","stroke-width":"2","d":"M13 10V3L4 14h7v7l9-11h-7z" })
-        ])
-      },
-      {
-        title: "Tajribali professor ustozlar",
-        desc: "O‘z sohasining yetuk mutaxassislari bilan sifatli ta’lim.",
-        icon: () => h("svg", { fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, [
-          h("path", { "stroke-linecap":"round","stroke-linejoin":"round","stroke-width":"2","d":"M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18" })
-        ])
-      }
-    ]
-  },
-  {
-    items: [
-      {
-        title: "Hamkorliklar",
-        desc: "Boshqa ta’lim markazlari va imtihon tashkilotlari bilan faol hamkorlik.",
-        icon: () => h("svg", { fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, [
-          h("path", { "stroke-linecap":"round","stroke-linejoin":"round","stroke-width":"2","d":"M3 13h18M5 17h14" })
-        ])
-      },
-      {
-        title: "Kasbga yo‘naltirish",
-        desc: "O‘quvchilarni kelajakdagi kasb tanloviga yo‘naltirish tizimi.",
-        icon: () => h("svg", { fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, [
-          h("path", { "stroke-linecap":"round","stroke-linejoin":"round","stroke-width":"2","d":"M12 6v6l4 2" })
-        ])
-      }
-    ]
-  },
-  {
-    items: [
-      {
-        title: "Kimyo kabineti",
-        desc: "Amaliy kimyo tajribalari uchun to‘liq jihozlangan laboratoriya.",
-        icon: () => h("svg", { fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, [
-          h("path", { "stroke-linecap":"round","stroke-linejoin":"round","stroke-width":"2","d":"M9 12l3 9 3-9" })
-        ])
-      },
-      {
-        title: "Fizika kabineti",
-        desc: "Zamonaviy jihozlar bilan ta’minlangan fizika xonasi.",
-        icon: () => h("svg", { fill: "none", stroke: "currentColor", viewBox: "0 0 24 24" }, [
-          h("path", { "stroke-linecap":"round","stroke-linejoin":"round","stroke-width":"2","d":"M12 2v20" })
-        ])
-      }
-    ]
-  }
-];
+const { t } = useI18n();
+
+const features = getWhySectionFeatures();
+
+const iconComponents: Record<IconName, Component> = {
+  clock: IconClock,
+  graduation: IconGraduation,
+  lightning: IconLightning,
+  certificate: IconCertificate,
+  partnership: IconPartnership,
+  career: IconCareer,
+  chemistry: IconChemistry,
+  physics: IconPhysics,
+};
+
+// Helper function to get icon component
+const getIconComponent = (iconName: IconName) => {
+  return iconComponents[iconName] || IconClock;
+};
 </script>
 
 <template>
-  <section id="why" class="bg-[#f7f9f6] py-24 px-4 sm:px-6 lg:px-40">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
-        Nega Farobiy School’ni <br /> tanlashingiz kerak?
+  <section
+    id="why"
+    class="dark:bg-dark-500 bg-[#f7f9f6] px-4 py-24 sm:px-6 lg:px-40"
+  >
+    <Motion
+      tag="div"
+      :initial="{ opacity: 0, y: 30 }"
+      :animate="{ opacity: 1, y: 0 }"
+      :transition="{ duration: 0.6 }"
+      class="mb-16 text-center"
+    >
+      <h2
+        class="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl dark:text-white"
+      >
+        {{ t("whyFarobiy.title") }}
       </h2>
-      <p class="text-gray-600 max-w-2xl mx-auto text-lg">
-        Farzandingizning kelajagi uchun kompleks va sifatli ta’lim izlayotgan bo‘lsangiz — Farobiy School aynan to‘g‘ri manzil!
+      <p class="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
+        {{ t("whyFarobiy.subtitle") }}
       </p>
-    </div>
+    </Motion>
 
     <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
       <Motion
-        v-for="(feature, index) in features"
-        :key="index"
+        v-for="(featureGroup, groupIndex) in features"
+        :key="groupIndex"
         tag="div"
-        class="rounded-2xl bg-white p-6 shadow-lg transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+        class="group dark:bg-dark-400 dark:border-dark-50 rounded-2xl border border-transparent bg-white p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:border-[#009663]/20 hover:shadow-xl"
         :initial="{ opacity: 0, y: 20 }"
         :animate="{ opacity: 1, y: 0 }"
-        :transition="{ delay: index * 0.1, duration: 0.5 }"
+        :transition="{ delay: groupIndex * 0.1, duration: 0.5 }"
       >
-        <div v-for="(item, i) in feature.items" :key="i" class="mb-6 last:mb-0 flex flex-col items-center">
-          <div class="mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-[#009663]/10 text-[#009663] shadow-sm">
-            <component :is="item.icon" class="h-7 w-7" />
-          </div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-1 text-center">
-            {{ item.title }}
+        <div
+          v-for="(item, itemIndex) in featureGroup.items"
+          :key="itemIndex"
+          class="mb-6 flex flex-col items-center last:mb-0"
+        >
+          <!-- Icon -->
+          <Motion
+            tag="div"
+            class="mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-linear-to-br from-[#009663]/10 to-[#009663]/5 text-[#009663] shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-md dark:from-[#00c878]/20 dark:to-[#00c878]/10 dark:text-[#00c878]"
+            :whileHover="{ scale: 1.15, rotate: 360 }"
+            :transition="{ duration: 0.6 }"
+          >
+            <component :is="getIconComponent(item.icon)" />
+          </Motion>
+
+          <!-- Title -->
+          <h3
+            class="mb-2 text-center text-lg font-semibold text-gray-900 transition-colors dark:text-white"
+          >
+            {{ t(item.titleKey) }}
           </h3>
-          <p class="text-gray-600 text-center text-sm">
-            {{ item.desc }}
+
+          <!-- Description -->
+          <p
+            class="text-center text-sm leading-relaxed text-gray-600 dark:text-gray-300"
+          >
+            {{ t(item.descKey) }}
           </p>
         </div>
       </Motion>

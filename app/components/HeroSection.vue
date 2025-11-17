@@ -12,7 +12,7 @@ const stats = computed(() => [
 <template>
   <section
     id="hero"
-    class="relative overflow-hidden bg-linear-to-br from-[#e6f5ef] via-white to-[#e6f5ef] pt-24 pb-16 lg:pt-32 lg:pb-24"
+    class="dark:from-dark-500 dark:via-dark-500 dark:to-dark-500 relative overflow-hidden bg-linear-to-br from-[#e6f5ef] via-white to-[#e6f5ef] pt-24 pb-16 lg:pt-32 lg:pb-24"
   >
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-10">
@@ -33,21 +33,6 @@ const stats = computed(() => [
       <div class="grid items-center gap-12 lg:grid-cols-2">
         <!-- Left Content -->
         <div class="space-y-8 lg:space-y-10">
-          <!-- Badge
-  <Motion
-    as="div"
-    :initial="{ opacity: 0, scale: 0.8 }"
-    :animate="{ opacity: 1, scale: 1 }"
-    :transition="{ duration: 0.5 }"
-    class="inline-block"
-  >
-    <span
-      class="bg-[#009663]/10 text-[#009663] inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold tracking-wide"
-    >
-      ✨ {{ $t("hero.badge") }}
-    </span>
-  </Motion> -->
-
           <!-- Title -->
           <Motion
             as="h1"
@@ -57,24 +42,23 @@ const stats = computed(() => [
             class="text-5xl leading-15 font-extrabold text-gray-900 sm:text-6xl lg:text-7xl"
           >
             <span
-              class="block bg-gradient-to-r from-[#009663] to-[#00b37e] bg-clip-text text-transparent"
+              class="font-bricolage block bg-linear-to-r from-[#009663] to-[#00b37e] bg-clip-text text-transparent"
             >
               Farobiy
             </span>
-            <span class="block">International School</span>
+            <span class="font-bricolage block text-gray-800 dark:text-white"
+              >International School</span
+            >
           </Motion>
 
-          <!-- Description -->
           <Motion
             as="p"
             :initial="{ opacity: 0, y: 30 }"
             :animate="{ opacity: 1, y: 0 }"
             :transition="{ duration: 0.6, delay: 0.2 }"
-            class="max-w-lg leading-relaxed text-gray-700 sm:text-lg lg:text-xl"
+            class="max-w-lg leading-relaxed text-gray-700 sm:text-lg lg:text-xl dark:text-white"
           >
-            Farobiy International School zamonaviy ta’lim va yuqori sifatli
-            bilimni ta’minlaydi. Bizning maqsadimiz – har bir o‘quvchini
-            kelajakda muvaffaqiyatli yetakchi qilish.
+            {{ t("hero.description") }}
           </Motion>
 
           <!-- Buttons -->
@@ -89,7 +73,7 @@ const stats = computed(() => [
               href="#contact"
               class="inline-flex items-center justify-center rounded-full bg-[#009663] px-6 py-3 font-medium text-white shadow-lg transition duration-300 hover:bg-[#007a4d]"
             >
-              Bog‘lanish
+              {{ t("hero.cta") }}
               <svg
                 class="ml-2 h-5 w-5"
                 fill="none"
@@ -108,7 +92,7 @@ const stats = computed(() => [
               href="#programs"
               class="inline-flex items-center justify-center rounded-full border-2 border-[#009663] px-6 py-3 font-medium text-[#009663] transition duration-300 hover:bg-[#009663]/10"
             >
-              Kurslar
+              {{ t("hero.programs") }}
             </a>
           </Motion>
 
@@ -142,7 +126,7 @@ const stats = computed(() => [
             class="relative overflow-hidden rounded-2xl shadow-2xl"
           >
             <NuxtImg
-              src="/heroImg.png"
+              src="/hero.webp"
               alt="png"
               class="h-[500px] w-full object-cover lg:h-[600px]"
               loading="lazy"
@@ -182,7 +166,7 @@ const stats = computed(() => [
               <div>
                 <div class="text-2xl font-bold text-gray-900">500+</div>
                 <div class="text-sm text-gray-600">
-                  {{ $t("hero.students") }}
+                  {{ t("hero.students") }}
                 </div>
               </div>
             </div>
