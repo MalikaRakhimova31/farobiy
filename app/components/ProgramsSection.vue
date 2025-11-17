@@ -5,22 +5,22 @@ const programs = [
   {
     key: "preschool",
     image:
-      "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&h=400&fit=crop",
+      "/img_1.jpg"
   },
   {
     key: "primary",
     image:
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=600&h=400&fit=crop",
+      "/img_2.jpg",
   },
   {
     key: "secondary",
     image:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=400&fit=crop",
+     "/img_3.jpg",
   },
   {
     key: "high",
     image:
-      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=600&h=400&fit=crop",
+    "/img_4.jpg"
   },
 ];
 
@@ -56,23 +56,17 @@ const cardVariants = (index: number) => ({
             class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
             loading="lazy"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-          <div class="absolute right-4 bottom-4 left-4 flex justify-center">
-            <span
-              class="bg-[#009663] inline-block rounded-full px-3 py-1 text-sm font-semibold text-white"
-            >
-              {{ $t(`programs.${program.key}.age`) }}
-            </span>
-          </div>
+          <div class="absolute inset-0 bg-linear-to-t from-black/50 to-transparent"></div>
+          
         </div>
 
         <div class="p-6">
-          <h3 class="mb-3 text-xl font-bold text-gray-900">
+          <!-- <h3 class="mb-3 text-xl font-bold text-gray-900">
             {{ $t(`programs.${program.key}.title`) }}
           </h3>
           <p class="mb-4 text-gray-700">
             {{ $t(`programs.${program.key}.description`) }}
-          </p>
+          </p> -->
           <a
             href="#contact"
             class="text-[#009663] hover:text-[#007a50] group inline-flex items-center font-semibold"
