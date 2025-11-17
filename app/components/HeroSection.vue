@@ -1,14 +1,11 @@
 <script setup lang="ts">
-import { Motion } from "@motionone/vue";
 const { t } = useI18n();
-
 const stats = computed(() => [
   { value: "15+", label: t("nav.programs") },
   { value: "50+", label: t("team.title") },
   { value: "98%", label: "Success Rate" },
 ]);
 </script>
-
 <template>
   <section
     id="hero"
@@ -28,18 +25,13 @@ const stats = computed(() => [
         "
       ></div>
     </div>
-
     <div class="relative container">
       <div class="grid items-center gap-12 lg:grid-cols-2">
         <!-- Left Content -->
         <div class="space-y-8 lg:space-y-10">
           <!-- Title -->
-          <Motion
-            as="h1"
-            :initial="{ opacity: 0, y: 50 }"
-            :animate="{ opacity: 1, y: 0 }"
-            :transition="{ duration: 0.7, delay: 0.1 }"
-            class="text-5xl leading-15 font-extrabold text-gray-900 sm:text-6xl lg:text-7xl"
+          <h1
+            class="animate-fade-in text-5xl leading-15 font-extrabold text-gray-900 sm:text-6xl lg:text-7xl"
           >
             <span
               class="font-bricolage block bg-linear-to-r from-[#009663] to-[#00b37e] bg-clip-text text-transparent"
@@ -49,26 +41,14 @@ const stats = computed(() => [
             <span class="font-bricolage block text-gray-800 dark:text-white"
               >International School</span
             >
-          </Motion>
-
-          <Motion
-            as="p"
-            :initial="{ opacity: 0, y: 30 }"
-            :animate="{ opacity: 1, y: 0 }"
-            :transition="{ duration: 0.6, delay: 0.2 }"
-            class="max-w-lg leading-relaxed text-gray-700 sm:text-lg lg:text-xl dark:text-white"
+          </h1>
+          <p
+            class="animate-fade-in max-w-lg leading-relaxed text-gray-700 sm:text-lg lg:text-xl dark:text-white"
           >
             {{ t("hero.description") }}
-          </Motion>
-
+          </p>
           <!-- Buttons -->
-          <Motion
-            as="div"
-            :initial="{ opacity: 0, y: 20 }"
-            :animate="{ opacity: 1, y: 0 }"
-            :transition="{ duration: 0.6, delay: 0.3 }"
-            class="mt-4 flex flex-col gap-4 sm:flex-row"
-          >
+          <div class="animate-fade-in mt-4 flex flex-col gap-4 sm:flex-row">
             <a
               href="#contact"
               class="inline-flex items-center justify-center rounded-full bg-[#009663] px-6 py-3 font-medium text-white shadow-lg transition duration-300 hover:bg-[#007a4d]"
@@ -94,36 +74,26 @@ const stats = computed(() => [
             >
               {{ t("hero.programs") }}
             </a>
-          </Motion>
-
+          </div>
           <!-- Stats -->
           <div class="flex flex-wrap gap-6 pt-6">
-            <Motion
+            <div
               v-for="(stat, i) in stats"
               :key="stat.value"
-              as="div"
-              class="text-center sm:text-left"
-              :initial="{ opacity: 0, y: 20 }"
-              :animate="{ opacity: 1, y: 0 }"
-              :transition="{ duration: 0.5, delay: 0.4 + i * 0.15 }"
+              class="animate-fade-in text-center sm:text-left"
             >
               <div class="text-3xl font-bold text-[#009663] sm:text-4xl">
                 {{ stat.value }}
               </div>
               <div class="mt-1 text-sm text-gray-600">{{ stat.label }}</div>
-            </Motion>
+            </div>
           </div>
         </div>
-
         <!-- Right Image -->
         <div class="relative">
           <!-- Image container with motion -->
-          <Motion
-            as="div"
-            :initial="{ opacity: 0, scale: 0.95 }"
-            :animate="{ opacity: 1, scale: 1 }"
-            :transition="{ duration: 0.8 }"
-            class="relative overflow-hidden rounded-2xl shadow-2xl"
+          <div
+            class="animate-fade-in relative overflow-hidden rounded-2xl shadow-2xl"
           >
             <NuxtImg
               src="/hero.webp"
@@ -135,15 +105,10 @@ const stats = computed(() => [
             <div
               class="absolute inset-0 bg-linear-to-t from-[#009663]/15 to-transparent"
             ></div>
-          </Motion>
-
+          </div>
           <!-- Floating Card -->
-          <Motion
-            as="div"
-            :initial="{ opacity: 0, y: 40 }"
-            :animate="{ opacity: 1, y: 0 }"
-            :transition="{ duration: 0.6, delay: 0.3 }"
-            class="absolute -bottom-6 -left-6 hidden max-w-xs rounded-xl bg-white p-6 shadow-xl sm:block"
+          <div
+            class="animate-fade-in absolute -bottom-6 -left-6 hidden max-w-xs rounded-xl bg-white p-6 shadow-xl sm:block"
           >
             <div class="flex items-center space-x-4">
               <div
@@ -170,7 +135,7 @@ const stats = computed(() => [
                 </div>
               </div>
             </div>
-          </Motion>
+          </div>
         </div>
       </div>
     </div>

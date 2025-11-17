@@ -1,30 +1,17 @@
-<script setup lang="ts">
-import { Motion } from "@motionone/vue";
-</script>
-
+<script setup lang="ts"></script>
 <template>
   <footer class="bg-[#0f1f1f] py-20 text-gray-300">
     <div class="container mx-auto">
       <div class="mb-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-12">
         <!-- About -->
-        <Motion
-          tag="div"
-          class="lg:col-span-2"
-          :initial="{ opacity: 0, y: 30 }"
-          :animate="{ opacity: 1, y: 0 }"
-          :transition="{ duration: 0.6, delay: 0.1 }"
+        <div class="animate-fade-in lg:col-span-2"
         >
           <div class="mb-4 flex items-center space-x-3">
             <!-- Logo -->
-            <Motion
-              tag="div"
-              :initial="{ opacity: 0, x: -60 }"
-              :animate="{ opacity: 1, x: 0 }"
-              :transition="{ duration: 0.8 }"
-              class="flex items-center space-x-2"
+            <div class="animate-fade-in flex items-center space-x-2"
             >
               <img src="/logo-white.png" alt="" class="w-44" />
-            </Motion>
+            </div>
           </div>
           <p class="mb-6 max-w-md text-gray-400">
             {{ $t("footer.aboutText") }}
@@ -40,14 +27,9 @@ import { Motion } from "@motionone/vue";
               </svg>
             </a>
           </div>
-        </Motion>
-
+        </div>
         <!-- Quick Links -->
-        <Motion
-          tag="div"
-          :initial="{ opacity: 0, y: 30 }"
-          :animate="{ opacity: 1, y: 0 }"
-          :transition="{ duration: 0.6, delay: 0.3 }"
+        <div class="animate-fade-in"
         >
           <h4 class="mb-4 text-lg font-semibold text-white">
             {{ $t("footer.quickLinks") }}
@@ -79,14 +61,9 @@ import { Motion } from "@motionone/vue";
               >
             </li>
           </ul>
-        </Motion>
-
+        </div>
         <!-- Contact -->
-        <Motion
-          tag="div"
-          :initial="{ opacity: 0, y: 30 }"
-          :animate="{ opacity: 1, y: 0 }"
-          :transition="{ duration: 0.6, delay: 0.5 }"
+        <div class="animate-fade-in"
         >
           <h4 class="mb-4 text-lg font-semibold text-white">
             {{ $t("footer.contact") }}
@@ -147,15 +124,10 @@ import { Motion } from "@motionone/vue";
               <span class="text-sm">{{ $t("footer.email") }}</span>
             </li>
           </ul>
-        </Motion>
+        </div>
       </div>
-
       <!-- Bottom Bar -->
-      <Motion
-        tag="div"
-        :initial="{ opacity: 0, y: 20 }"
-        :animate="{ opacity: 1, y: 0 }"
-        :transition="{ duration: 0.6, delay: 0.7 }"
+      <div class="animate-fade-in"
       >
         <div
           class="flex flex-col items-center justify-between space-y-4 border-t border-gray-800 pt-8 sm:flex-row sm:space-y-0"
@@ -174,7 +146,7 @@ import { Motion } from "@motionone/vue";
             >
           </div>
         </div>
-      </Motion>
+      </div>
     </div>
   </footer>
 </template>

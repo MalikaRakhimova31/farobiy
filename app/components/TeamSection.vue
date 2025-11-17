@@ -27,7 +27,6 @@ const teamMembers = [
   },
 ];
 </script>
-
 <template>
   <section id="team" class="dark:bg-dark-500 bg-white py-20">
     <div class="container">

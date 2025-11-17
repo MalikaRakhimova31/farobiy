@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { Motion } from "@motionone/vue";
-
 const programs = [
   {
     key: "preschool",
@@ -19,7 +17,6 @@ const programs = [
     image: "/img_4.jpg",
   },
 ];
-
 const cardVariants = (index: number) => ({
   initial: { opacity: 0, y: 30 },
   animate: {
@@ -29,7 +26,6 @@ const cardVariants = (index: number) => ({
   },
 });
 </script>
-
 <template>
   <section
     id="programs"
@@ -43,14 +39,9 @@ const cardVariants = (index: number) => ({
         {{ $t("programs.subtitle") }}
       </p>
     </div>
-
     <div class="container grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-      <Motion
-        v-for="(program, index) in programs"
+      <div class="animate-fade-in group transform overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
         :key="index"
-        :initial="cardVariants(index).initial"
-        :animate="cardVariants(index).animate"
-        class="group transform overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
       >
         <div class="relative h-48 overflow-hidden rounded-t-2xl">
           <NuxtImg
@@ -63,7 +54,6 @@ const cardVariants = (index: number) => ({
             class="absolute inset-0 bg-linear-to-t from-black/50 to-transparent"
           ></div>
         </div>
-
         <div class="p-6">
           <!-- <h3 class="mb-3 text-xl font-bold text-gray-900">
             {{ $t(`programs.${program.key}.title`) }}
@@ -91,7 +81,7 @@ const cardVariants = (index: number) => ({
             </svg>
           </a>
         </div>
-      </Motion>
+      </div>
     </div>
   </section>
 </template>

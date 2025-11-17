@@ -6,24 +6,19 @@ const sliderImages = [
   "/slider-4.webp",
   "/slider-5.webp",
 ];
-
 const { t } = useI18n();
 const currentIndex = ref(0);
 const isTransitioning = ref(false);
 const isImageLoading = ref(true);
 const loadedImages = ref(new Set<number>());
-
 const currentImage = computed(() => sliderImages[currentIndex.value]);
-
 const handleImageLoad = () => {
   isImageLoading.value = false;
   loadedImages.value.add(currentIndex.value);
 };
-
 const handleImageError = () => {
   isImageLoading.value = false;
 };
-
 const goToPrev = () => {
   if (isTransitioning.value) return;
   isTransitioning.value = true;
@@ -37,7 +32,6 @@ const goToPrev = () => {
     isTransitioning.value = false;
   }, 300);
 };
-
 const goToNext = () => {
   if (isTransitioning.value) return;
   isTransitioning.value = true;
@@ -51,7 +45,6 @@ const goToNext = () => {
     isTransitioning.value = false;
   }, 300);
 };
-
 const goToSlide = (index: number) => {
   if (isTransitioning.value || index === currentIndex.value) return;
   isTransitioning.value = true;
@@ -64,7 +57,6 @@ const goToSlide = (index: number) => {
   }, 300);
 };
 </script>
-
 <template>
   <div class="container" id="programs">
     <div class="relative mt-[124px] mb-30">

@@ -1,30 +1,22 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { Motion } from "@motionone/vue";
-
 const form = ref({
   name: "",
   phone: "",
   message: "",
 });
-
 const isSubmitting = ref(false);
 const submitMessage = ref("");
 const submitSuccess = ref(false);
-
 const handleSubmit = async () => {
   isSubmitting.value = true;
   submitMessage.value = "";
-
   await new Promise((resolve) => setTimeout(resolve, 1500));
-
   try {
     console.log("Form submitted:", form.value);
-
     submitSuccess.value = true;
     submitMessage.value =
       "Xabaringiz muvaffaqiyatli yuborildi! / Your message has been sent successfully!";
-
     form.value = { name: "", phone: "", message: "" };
   } catch (error) {
     submitSuccess.value = false;
@@ -36,7 +28,6 @@ const handleSubmit = async () => {
   }
 };
 </script>
-
 <template>
   <section
     id="contact"
@@ -51,15 +42,11 @@ const handleSubmit = async () => {
         class="bg-secondary-900/10 absolute right-10 bottom-20 h-96 w-96 rounded-full blur-3xl dark:bg-[#00c878]/5"
       ></div>
     </div>
-
     <div
       class="relative z-10 container mx-auto flex flex-col items-center px-6"
     >
       <!-- Header -->
-      <Motion
-        :initial="{ opacity: 0, y: -40 }"
-        :animate="{ opacity: 1, y: 0, transition: { duration: 0.6 } }"
-        class="mb-16 text-center"
+      <div class="animate-fade-in mb-16 text-center"
       >
         <h2
           class="mb-4 text-4xl font-bold text-gray-900 sm:text-5xl dark:text-white"
@@ -69,21 +56,16 @@ const handleSubmit = async () => {
         <p class="mx-auto max-w-xl text-lg text-gray-700 dark:text-gray-300">
           {{ $t("contact.subtitle") }}
         </p>
-      </Motion>
-
+      </div>
       <!-- Form Card -->
-      <Motion
-        :initial="{ opacity: 0, scale: 0.9 }"
-        :animate="{ opacity: 1, scale: 1, transition: { duration: 0.6 } }"
-        class="dark:shadow-secondary-900/10 dark:border-secondary-900/20 w-full max-w-xl rounded-3xl border border-transparent bg-white/90 p-10 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_60px_-15px_rgba(0,150,99,0.3)] dark:bg-[#1a2f27]/90 dark:hover:shadow-[#00c878]/20"
+      <div class="animate-fade-in dark:shadow-secondary-900/10 dark:border-secondary-900/20 w-full max-w-xl rounded-3xl border border-transparent bg-white/90 p-10 shadow-2xl backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_60px_-15px_rgba(0,150,99,0.3)] dark:bg-[#1a2f27]/90 dark:hover:shadow-[#00c878]/20"
       >
         <form @submit.prevent="handleSubmit" class="space-y-6">
           <!-- Inputs -->
           <div class="grid gap-5 md:grid-cols-2">
-            <Motion
+            <div class="animate-fade-in"
               v-for="field in ['name', 'phone']"
               :key="field"
-              :initial="{ opacity: 0, y: 20 }"
               :animate="{
                 opacity: 1,
                 y: 0,
@@ -106,12 +88,10 @@ const handleSubmit = async () => {
                   class="dark:border-secondary-900/30 focus:border-secondary-900 focus:ring-secondary-900/20 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 placeholder-gray-400 shadow-sm transition-all duration-200 outline-none focus:bg-white focus:ring-2 dark:bg-[#0d2419] dark:text-white dark:placeholder-gray-500 dark:focus:border-[#00c878] dark:focus:bg-[#162d24] dark:focus:ring-[#00c878]/20"
                 />
               </div>
-            </Motion>
+            </div>
           </div>
-
           <!-- Message -->
-          <Motion
-            :initial="{ opacity: 0, y: 20 }"
+          <div class="animate-fade-in"
             :animate="{
               opacity: 1,
               y: 0,
@@ -130,11 +110,9 @@ const handleSubmit = async () => {
                 class="dark:border-secondary-900/30 focus:border-secondary-900 focus:ring-secondary-900/20 w-full resize-none rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-gray-900 placeholder-gray-400 shadow-sm transition-all duration-200 outline-none focus:bg-white focus:ring-2 dark:bg-[#0d2419] dark:text-white dark:placeholder-gray-500 dark:focus:border-[#00c878] dark:focus:bg-[#162d24] dark:focus:ring-[#00c878]/20"
               ></textarea>
             </div>
-          </Motion>
-
+          </div>
           <!-- Submit -->
-          <Motion
-            :initial="{ opacity: 0, y: 10 }"
+          <div class="animate-fade-in"
             :animate="{
               opacity: 1,
               y: 0,
@@ -170,13 +148,10 @@ const handleSubmit = async () => {
                 {{ $t("contact.submit") }}...
               </span>
             </button>
-          </Motion>
-
+          </div>
           <!-- Message -->
-          <Motion
+          <div class="animate-fade-in"
             v-if="submitMessage"
-            :initial="{ opacity: 0, y: 10 }"
-            :animate="{ opacity: 1, y: 0, transition: { duration: 0.5 } }"
           >
             <p
               :class="[
@@ -188,9 +163,9 @@ const handleSubmit = async () => {
             >
               {{ submitMessage }}
             </p>
-          </Motion>
+          </div>
         </form>
-      </Motion>
+      </div>
     </div>
   </section>
 </template>

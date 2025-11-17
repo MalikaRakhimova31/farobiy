@@ -1,8 +1,4 @@
-<script setup lang="ts">
-import { ref } from "vue";
-import { Motion } from "@motionone/vue";
-</script>
-
+<script setup lang="ts"></script>
 <template>
   <section id="faq" class="dark:bg-dark-500 bg-gray-50 py-20">
     <div class="container">
@@ -17,18 +13,12 @@ import { Motion } from "@motionone/vue";
           {{ $t("faq.subtitle") }}
         </p>
       </div>
-
       <div class="mb-20 grid gap-6 md:grid-cols-2">
-        <Motion
+        <div
           v-for="index in 5"
           :key="index"
-          :initial="{ opacity: 0, y: 40 }"
-          :animate="{
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.5, delay: index * 0.15 },
-          }"
-          class="dark:bg-dark-500 rounded-3xl border border-transparent bg-white p-6 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-xl dark:border-gray-600"
+          class="animate-fade-in dark:bg-dark-500 rounded-3xl border border-transparent bg-white p-6 shadow-sm transition-transform hover:-translate-y-1 hover:shadow-xl dark:border-gray-600"
+          :style="{ animationDelay: `${index * 100}ms` }"
         >
           <div class="flex items-start space-x-4">
             <div
@@ -47,7 +37,7 @@ import { Motion } from "@motionone/vue";
               </p>
             </div>
           </div>
-        </Motion>
+        </div>
       </div>
     </div>
   </section>

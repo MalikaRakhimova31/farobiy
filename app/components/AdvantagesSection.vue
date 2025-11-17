@@ -1,16 +1,3 @@
-<script setup lang="ts">
-import { Motion } from "@motionone/vue";
-
-const cardVariants = (index: number) => ({
-  initial: { opacity: 0, y: 30 },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: index * 0.2 },
-  },
-});
-</script>
-
 <template>
   <section class="dark:bg-dark-500 py-20">
     <div class="container">
@@ -25,12 +12,10 @@ const cardVariants = (index: number) => ({
         </p>
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-        <Motion
+        <div
           v-for="index in 6"
           :key="index"
-          :initial="cardVariants(index).initial"
-          :animate="cardVariants(index).animate"
-          class="group relative transform rounded-2xl border border-transparent bg-gradient-to-br from-[#e6f7f1] to-[#ccefe4] p-6 transition-all duration-500 hover:-translate-y-2 hover:border-[#009663] hover:shadow-2xl lg:p-8 dark:from-[#1a3a2e] dark:to-[#0d2419] dark:hover:border-[#00c878] dark:hover:shadow-[#009663]/20"
+          class="animate-fade-in group relative transform rounded-2xl border border-transparent bg-gradient-to-br from-[#e6f7f1] to-[#ccefe4] p-6 transition-all duration-500 hover:-translate-y-2 hover:border-[#009663] hover:shadow-2xl lg:p-8 dark:from-[#1a3a2e] dark:to-[#0d2419] dark:hover:border-[#00c878] dark:hover:shadow-[#009663]/20"
         >
           <div
             class="absolute top-6 right-6 text-5xl font-extrabold text-[#009663] opacity-30 transition-all group-hover:text-[#007a50] group-hover:opacity-100 dark:text-[#00c878] dark:group-hover:text-[#00e891]"
@@ -38,10 +23,8 @@ const cardVariants = (index: number) => ({
             0{{ index }}
           </div>
           <div class="relative z-10 flex flex-col items-start">
-            <Motion
-              :initial="{ scale: 1 }"
-              :animate="{ scale: 1.1 }"
-              class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#009663] transition-transform group-hover:scale-110 dark:bg-[#00c878]"
+            <div
+              class="animate-fade-in mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#009663] transition-transform group-hover:scale-110 dark:bg-[#00c878]"
             >
               <svg
                 class="h-6 w-6 text-white"
@@ -56,7 +39,7 @@ const cardVariants = (index: number) => ({
                   d="M5 13l4 4L19 7"
                 />
               </svg>
-            </Motion>
+            </div>
             <!-- Title -->
             <h3 class="mb-3 text-xl font-bold text-gray-900 dark:text-white">
               {{ $t(`advantages.item${index}.title`) }}
@@ -66,7 +49,7 @@ const cardVariants = (index: number) => ({
               {{ $t(`advantages.item${index}.description`) }}
             </p>
           </div>
-        </Motion>
+        </div>
       </div>
     </div>
   </section>
