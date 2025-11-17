@@ -29,7 +29,6 @@ const teamMembers = [
   },
 ];
 
-
 const cardVariants = (index: number) => ({
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.5, delay: index * 0.2 } },
@@ -47,9 +46,7 @@ const cardVariants = (index: number) => ({
       </p>
     </div>
 
-    <div
-      class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 xl:grid-cols-5"
-    >
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 lg:gap-8">
       <Motion
         v-for="(member, index) in teamMembers"
         :key="index"
@@ -57,32 +54,32 @@ const cardVariants = (index: number) => ({
         :animate="cardVariants(index).animate"
         class="group"
       >
-        <div
-          class="relative mb-4 overflow-hidden rounded-2xl shadow-lg transition-shadow hover:shadow-xl"
-        >
+        <!-- Card Image -->
+        <div class="relative mb-4 overflow-hidden rounded-2xl shadow-lg transition-shadow hover:shadow-2xl transform hover:-translate-y-2">
           <NuxtImg
             :src="member.image"
             :alt="member.name"
-            class="h-72 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            class="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
           />
-          <div
-            class="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100"
-          ></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
         </div>
+
+        <!-- Name & Position -->
         <div class="text-center">
           <h3 class="mb-1 text-lg font-bold text-gray-900">
             {{ member.name }}
           </h3>
-          <p class="text-primary-600 text-sm font-medium">
+          <p class="text-[#009663] text-sm font-medium">
             {{ $t(`team.position${index + 1}`) }}
           </p>
         </div>
       </Motion>
     </div>
 
+    <!-- View All Button -->
     <div class="mt-12 text-center">
-      <button class="btn-outline">
+      <button class="px-6 py-3 border-2 border-[#009663] text-[#009663] rounded-full font-semibold transition-colors hover:bg-[#009663] hover:text-white">
         {{ $t("team.viewAll") }}
       </button>
     </div>

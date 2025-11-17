@@ -24,7 +24,6 @@ const programs = [
   },
 ];
 
-// Har bir karta uchun animation variants (stagger delay)
 const cardVariants = (index: number) => ({
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.5, delay: index * 0.2 } },
@@ -32,7 +31,7 @@ const cardVariants = (index: number) => ({
 </script>
 
 <template>
-  <section id="programs" class="from-primary-50 bg-linear-to-br to-green-50 py-20">
+  <section id="programs" class="from-[#e6f7f1] bg-gradient-to-br to-[#ccefe4] py-20">
     <div class="container mb-12 text-center lg:mb-16">
       <h2 class="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl">
         {{ $t("programs.title") }}
@@ -48,19 +47,19 @@ const cardVariants = (index: number) => ({
         :key="index"
         :initial="cardVariants(index).initial"
         :animate="cardVariants(index).animate"
-        class="group overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:shadow-2xl"
+        class="group overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-500 hover:shadow-2xl transform hover:-translate-y-2"
       >
-        <div class="relative h-48 overflow-hidden">
+        <div class="relative h-48 overflow-hidden rounded-t-2xl">
           <NuxtImg
             :src="program.image"
             :alt="$t(`programs.${program.key}.title`)"
             class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
             loading="lazy"
           />
-          <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent"></div>
-          <div class="absolute right-4 bottom-4 left-4">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+          <div class="absolute right-4 bottom-4 left-4 flex justify-center">
             <span
-              class="bg-primary-600 inline-block rounded-full px-3 py-1 text-sm font-semibold text-white"
+              class="bg-[#009663] inline-block rounded-full px-3 py-1 text-sm font-semibold text-white"
             >
               {{ $t(`programs.${program.key}.age`) }}
             </span>
@@ -71,12 +70,12 @@ const cardVariants = (index: number) => ({
           <h3 class="mb-3 text-xl font-bold text-gray-900">
             {{ $t(`programs.${program.key}.title`) }}
           </h3>
-          <p class="mb-4 text-gray-600">
+          <p class="mb-4 text-gray-700">
             {{ $t(`programs.${program.key}.description`) }}
           </p>
           <a
             href="#contact"
-            class="text-primary-600 hover:text-primary-700 group inline-flex items-center font-semibold"
+            class="text-[#009663] hover:text-[#007a50] group inline-flex items-center font-semibold"
           >
             {{ $t("hero.cta") }}
             <svg

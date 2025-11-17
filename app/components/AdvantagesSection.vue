@@ -6,7 +6,7 @@ const cardVariants = (index: number) => ({
   animate: { 
     opacity: 1, 
     y: 0, 
-    transition: { duration: 0.5, delay: index * 0.2 } // index bilan delay
+    transition: { duration: 0.5, delay: index * 0.2 }
   },
 });
 </script>
@@ -28,24 +28,32 @@ const cardVariants = (index: number) => ({
         :key="index"
         :initial="cardVariants(index).initial"
         :animate="cardVariants(index).animate"
-        class="group relative bg-linear-to-br from-gray-50 to-primary-50 rounded-2xl p-6 lg:p-8 hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-primary-200"
+        class="group relative bg-gradient-to-br from-[#e6f7f1] to-[#ccefe4] rounded-2xl p-6 lg:p-8 transition-all duration-500 border border-transparent hover:border-[#009663] hover:shadow-2xl transform hover:-translate-y-2"
       >
-        <div class="absolute top-6 right-6 text-5xl font-bold text-primary-100 group-hover:text-primary-200 transition-colors">
+        <!-- Card Number -->
+        <div class="absolute top-6 right-6 text-5xl font-extrabold text-[#009663] group-hover:text-[#007a50] transition-colors">
           0{{ index }}
         </div>
 
-        <div class="relative z-10">
-          <div class="w-12 h-12 bg-primary-600 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+        <div class="relative z-10 flex flex-col items-start">
+          <!-- Icon -->
+          <Motion
+            :initial="{ scale: 1 }"
+            :animate="{ scale: 1.1 }"
+            class="w-12 h-12 bg-[#009663] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"
+          >
             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
-          </div>
+          </Motion>
 
+          <!-- Title -->
           <h3 class="text-xl font-bold text-gray-900 mb-3">
             {{ $t(`advantages.item${index}.title`) }}
           </h3>
 
-          <p class="text-gray-600">
+          <!-- Description -->
+          <p class="text-gray-700">
             {{ $t(`advantages.item${index}.description`) }}
           </p>
         </div>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const { t } = useI18n();
 import { Motion } from "@motionone/vue";
+const { t } = useI18n();
 
 const stats = computed(() => [
   { value: "15+", label: t("nav.programs") },
@@ -12,18 +12,14 @@ const stats = computed(() => [
 <template>
   <section
     id="hero"
-    class="from-primary-50 relative overflow-hidden bg-linear-to-br via-white to-green-50 pt-24 pb-16 lg:pt-32 lg:pb-24"
+    class="relative overflow-hidden bg-linear-to-br from-[#e6f5ef] via-white to-[#e6f5ef] pt-24 pb-16 lg:pt-32 lg:pb-24"
   >
     <!-- Background Pattern -->
     <div class="absolute inset-0 opacity-10">
       <div
         class="absolute inset-0"
         style="
-          background-image: radial-gradient(
-            circle at 1px 1px,
-            rgb(34 197 94) 1px,
-            transparent 0
-          );
+          background-image: radial-gradient(circle at 1px 1px, #009663 1px, transparent 0);
           background-size: 40px 40px;
         "
       ></div>
@@ -42,7 +38,7 @@ const stats = computed(() => [
             class="inline-block"
           >
             <span
-              class="bg-primary-100 text-primary-700 inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold"
+              class="bg-[#009663]/10 text-[#009663] inline-flex items-center rounded-full px-4 py-2 text-sm font-semibold"
             >
               ✨ {{ $t("hero.badge") }}
             </span>
@@ -78,10 +74,13 @@ const stats = computed(() => [
             :transition="{ duration: 0.6, delay: 0.3 }"
             class="flex flex-col gap-4 sm:flex-row"
           >
-            <a href="#contact" class="btn-primary text-center">
+            <a
+              href="#contact"
+              class="inline-flex items-center justify-center rounded-full bg-[#009663] px-6 py-3 text-white font-medium shadow-md hover:bg-[#007a4d] transition"
+            >
               {{ $t("hero.cta") }}
               <svg
-                class="ml-2 inline-block h-5 w-5"
+                class="ml-2 h-5 w-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -94,7 +93,10 @@ const stats = computed(() => [
                 />
               </svg>
             </a>
-            <a href="#programs" class="btn-outline text-center">
+            <a
+              href="#programs"
+              class="inline-flex items-center justify-center rounded-full border-2 border-[#009663] px-6 py-3 text-[#009663] font-medium hover:bg-[#009663]/10 transition"
+            >
               {{ $t("nav.programs") }}
             </a>
           </Motion>
@@ -110,7 +112,7 @@ const stats = computed(() => [
               :animate="{ opacity: 1, y: 0 }"
               :transition="{ duration: 0.5, delay: 0.4 + i * 0.15 }"
             >
-              <div class="text-primary-600 text-3xl font-bold lg:text-4xl">
+              <div class="text-[#009663] text-3xl font-bold lg:text-4xl">
                 {{ stat.value }}
               </div>
               <div class="mt-1 text-sm text-gray-600">{{ stat.label }}</div>
@@ -134,10 +136,8 @@ const stats = computed(() => [
               class="h-[500px] w-full object-cover lg:h-[600px]"
               loading="lazy"
             />
-            <!-- Overlay decoration -->
-            <div
-              class="from-primary-900/30 absolute inset-0 bg-linear-to-t to-transparent"
-            ></div>
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-linear-to-t from-[#009663]/30 to-transparent"></div>
           </Motion>
 
           <!-- Floating Card -->
@@ -149,11 +149,9 @@ const stats = computed(() => [
             class="absolute -bottom-6 -left-6 hidden max-w-xs rounded-xl bg-white p-6 shadow-xl sm:block"
           >
             <div class="flex items-center space-x-4">
-              <div
-                class="bg-primary-100 flex h-12 w-12 items-center justify-center rounded-full"
-              >
+              <div class="bg-[#009663]/10 flex h-12 w-12 items-center justify-center rounded-full">
                 <svg
-                  class="text-primary-600 h-6 w-6"
+                  class="text-[#009663] h-6 w-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -168,9 +166,7 @@ const stats = computed(() => [
               </div>
               <div>
                 <div class="text-2xl font-bold text-gray-900">500+</div>
-                <div class="text-sm text-gray-600">
-                  {{ $t("hero.students") }}
-                </div>
+                <div class="text-sm text-gray-600">{{ $t("hero.students") }}</div>
               </div>
             </div>
           </Motion>

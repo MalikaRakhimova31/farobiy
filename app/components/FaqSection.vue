@@ -30,7 +30,7 @@ const toggleQuestion = (index: number) => {
           class="rounded-3xl bg-white p-6 shadow-sm hover:shadow-xl transition-transform hover:-translate-y-1"
         >
           <div class="flex items-start space-x-4">
-            <div class="bg-linear-to-tr from-primary-500 to-primary-300 flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-white font-bold text-lg">
+            <div class="bg-gradient-to-tr from-[#009663] to-[#00b377] flex h-14 w-14 shrink-0 items-center justify-center rounded-full text-white font-bold text-lg">
               {{ String(index).padStart(2, "0") }}
             </div>
             <div>
@@ -60,7 +60,7 @@ const toggleQuestion = (index: number) => {
             class="flex w-full items-center justify-between p-6 text-left hover:bg-gray-50 rounded-3xl transition-colors"
           >
             <div class="flex flex-1 items-center space-x-4">
-              <div class="bg-linear-to-tr from-primary-500 to-primary-300 mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-white font-semibold">
+              <div class="bg-gradient-to-tr from-[#009663] to-[#00b377] mt-1 flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-white font-semibold">
                 {{ index }}
               </div>
               <span class="font-medium text-gray-900">{{ $t(`questions.q${index}`) }}</span>
@@ -80,7 +80,7 @@ const toggleQuestion = (index: number) => {
             :initial="{ height: 0, opacity: 0 }"
             :animate="{ height: 'auto', opacity: 1, transition: { duration: 0.35 } }"
             :exit="{ height: 0, opacity: 0, transition: { duration: 0.35 } }"
-            class="px-6 py-5 bg-linear-to-r from-gray-50 to-gray-100 rounded-b-3xl overflow-hidden"
+            class="px-6 py-5 bg-gray-50 rounded-b-3xl overflow-hidden"
           >
             <div class="pl-12 text-gray-700">{{ $t(`questions.a${index}`) }}</div>
           </Motion>

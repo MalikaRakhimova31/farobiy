@@ -50,45 +50,37 @@ const features = [
 ];
 </script>
 
-
 <template>
-  <section id="why" class="container bg-white my-20">
-    <div class="mb-12 text-center lg:mb-16">
-      <h2 class="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl">
+  <section id="why" class="bg-[#f7f9f6] py-24 px-4 sm:px-6 lg:px-40">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
         {{ $t("why.title") }}
       </h2>
-      <p class="mx-auto max-w-2xl text-lg text-gray-600">
+      <p class="text-gray-600 max-w-2xl mx-auto text-lg">
         {{ $t("why.subtitle") }}
       </p>
     </div>
 
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+    <div class="grid gap-8 sm:grid-cols-2">
       <Motion
         v-for="(feature, index) in features"
         :key="index"
         tag="div"
-        class="card group transition-transform duration-300 hover:scale-105"
+        class="flex flex-col items-center rounded-lg bg-white p-6 shadow-md transition-transform duration-300 hover:scale-105"
         :initial="{ opacity: 0, y: 20 }"
         :animate="{ opacity: 1, y: 0 }"
         :transition="{ delay: index * 0.1, duration: 0.5 }"
-        whileHover="{ scale: 1.05 }"
       >
-        <div
-          class="bg-primary-100 group-hover:bg-primary-600 mb-4 flex h-14 w-14 items-center justify-center rounded-xl transition-colors"
-        >
-          <component
-            :is="feature.icon"
-            class="text-primary-600 h-7 w-7 transition-colors group-hover:text-white"
-          />
+        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-[#009663]/10 text-[#009663]">
+          <component :is="feature.icon" class="h-6 w-6" />
         </div>
-        <h3 class="mb-3 text-xl font-bold text-gray-900">
+        <h3 class="text-lg font-semibold text-gray-900 mb-2 text-center">
           {{ $t(`why.feature${index + 1}.title`) }}
         </h3>
-        <p class="text-gray-600">
+        <p class="text-gray-600 text-center">
           {{ $t(`why.feature${index + 1}.description`) }}
         </p>
       </Motion>
     </div>
   </section>
 </template>
-

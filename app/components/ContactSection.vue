@@ -2,7 +2,6 @@
 import { ref } from "vue";
 import { Motion } from "@motionone/vue";
 
-// Form object
 const form = ref({
   name: "",
   phone: "",
@@ -13,7 +12,6 @@ const isSubmitting = ref(false);
 const submitMessage = ref("");
 const submitSuccess = ref(false);
 
-// Submit handler
 const handleSubmit = async () => {
   isSubmitting.value = true;
   submitMessage.value = "";
@@ -40,90 +38,67 @@ const handleSubmit = async () => {
 </script>
 
 <template>
-<section
-  id="contact"
-  class="relative overflow-hidden bg-linear-to-br from-primary-600 to-primary-800 py-20"
->
-  <!-- Background pattern -->
-  <div class="absolute inset-0 opacity-10">
-    <div
-      class="absolute inset-0"
-      style="background-image: radial-gradient(circle at 1px 1px, white 1px, transparent 0); background-size: 40px 40px;"
-    ></div>
+<section id="contact" class="relative py-24 bg-gradient-to-br from-[#e0f5ef] to-[#009663]/20">
+  <!-- Soft radial light spots -->
+  <div class="absolute inset-0">
+    <div class="absolute w-72 h-72 bg-white/10 rounded-full top-10 left-10 blur-3xl"></div>
+    <div class="absolute w-96 h-96 bg-white/10 rounded-full bottom-20 right-10 blur-3xl"></div>
   </div>
 
-  <div class="relative container">
+  <div class="container mx-auto px-6 relative z-10 flex flex-col items-center">
 
     <!-- Header -->
     <Motion
-      :initial="{ opacity: 0, y: -30 }"
+      :initial="{ opacity: 0, y: -40 }"
       :animate="{ opacity: 1, y: 0, transition: { duration: 0.6 } }"
-      class="mb-12 text-center"
+      class="text-center mb-16"
     >
-      <h2 class="mb-4 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-        {{ $t("contact.title") }}
-      </h2>
-      <p class="text-primary-100 text-lg">{{ $t("contact.subtitle") }}</p>
+      <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">{{ $t("contact.title") }}</h2>
+      <p class="text-gray-700 text-lg max-w-xl mx-auto">{{ $t("contact.subtitle") }}</p>
     </Motion>
 
     <!-- Form Card -->
     <Motion
-      :initial="{ opacity: 0, scale: 0.95 }"
+      :initial="{ opacity: 0, scale: 0.9 }"
       :animate="{ opacity: 1, scale: 1, transition: { duration: 0.6 } }"
-      class="rounded-3xl bg-white p-8 lg:p-12 shadow-2xl hover:-translate-y-1 transition-transform"
+      class="w-full max-w-xl bg-white/80 backdrop-blur-xl rounded-3xl p-10 shadow-xl hover:shadow-2xl transition-transform hover:-translate-y-2"
     >
-      <form @submit.prevent="handleSubmit" class="space-y-6">
-
-        <!-- Name & Phone -->
-        <div class="grid gap-6 md:grid-cols-2">
-          <Motion
-            v-for="field in ['name', 'phone']"
-            :key="field"
-            :initial="{ opacity: 0, y: 20 }"
-            :animate="{ opacity: 1, y: 0, transition: { duration: 0.5, delay: field==='phone'?0.1:0 } }"
-          >
+      <form @submit.prevent="handleSubmit" class="space-y-5">
+        <!-- Inputs -->
+        <div class="grid gap-5 md:grid-cols-2">
+          <Motion v-for="field in ['name','phone']" :key="field" :initial="{ opacity:0, y:20 }" :animate="{ opacity:1, y:0, transition:{duration:0.5, delay:field==='phone'?0.1:0} }">
             <div>
-              <label class="mb-2 block text-sm font-semibold text-gray-700">
-                {{ $t(`contact.${field}`) }} *
-              </label>
+              <label class="block mb-2 text-sm font-medium text-gray-800">{{ $t(`contact.${field}`) }} *</label>
               <input
                 v-model="form[field as keyof typeof form]"
                 :type="field==='phone'?'tel':'text'"
                 required
                 :placeholder="$t(`contact.${field}Placeholder`)"
-                class="w-full rounded-xl border border-gray-300 px-4 py-3 shadow-sm transition-all outline-none focus:border-transparent focus:ring-2 focus:ring-gradient-to-r focus:from-primary-500 focus:to-primary-300"
+                class="w-full px-4 py-3 rounded-xl bg-gray-100 placeholder-gray-500 text-gray-900 shadow-inner outline-none focus:bg-white focus:ring-2 focus:ring-[#009663] transition"
               />
             </div>
           </Motion>
         </div>
 
         <!-- Message -->
-        <Motion
-          :initial="{ opacity: 0, y: 20 }"
-          :animate="{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.2 } }"
-        >
+        <Motion :initial="{ opacity: 0, y: 20 }" :animate="{ opacity: 1, y: 0, transition:{duration:0.5, delay:0.2} }">
           <div>
-            <label class="mb-2 block text-sm font-semibold text-gray-700">
-              {{ $t("contact.message") }}
-            </label>
+            <label class="block mb-2 text-sm font-medium text-gray-800">{{ $t("contact.message") }}</label>
             <textarea
               v-model="form.message"
               rows="5"
               :placeholder="$t('contact.messagePlaceholder')"
-              class="w-full resize-none rounded-xl border border-gray-300 px-4 py-3 shadow-sm transition-all outline-none focus:border-transparent focus:ring-2 focus:ring-gradient-to-r focus:from-primary-500 focus:to-primary-300"
+              class="w-full px-4 py-3 rounded-xl bg-gray-100 placeholder-gray-500 text-gray-900 shadow-inner outline-none focus:bg-white focus:ring-2 focus:ring-[#009663] transition resize-none"
             ></textarea>
           </div>
         </Motion>
 
         <!-- Submit -->
-        <Motion
-          :initial="{ opacity: 0, y: 10 }"
-          :animate="{ opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.3 } }"
-        >
+        <Motion :initial="{ opacity: 0, y: 10 }" :animate="{ opacity: 1, y: 0, transition:{duration:0.5, delay:0.3} }">
           <button
             type="submit"
             :disabled="isSubmitting"
-            class="btn-primary w-full rounded-xl bg-linear-to-r from-primary-500 to-primary-600 text-white py-3 font-semibold hover:-translate-y-1 hover:shadow-lg transition-all flex justify-center items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            class="w-full py-3 rounded-full bg-gradient-to-r from-[#009663] to-[#00b377] text-white font-semibold hover:scale-105 hover:shadow-lg transition-all flex justify-center items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <span v-if="!isSubmitting">{{ $t("contact.submit") }}</span>
             <span v-else class="flex items-center">
@@ -136,24 +111,15 @@ const handleSubmit = async () => {
           </button>
         </Motion>
 
-        <!-- Success/Error Message -->
-        <Motion
-          v-if="submitMessage"
-          :initial="{ opacity: 0, y: 10 }"
-          :animate="{ opacity: 1, y: 0, transition: { duration: 0.5 } }"
-        >
-          <p
-            :class="[
-              'text-center text-sm mt-2 font-medium px-4 py-2 rounded-full',
-              submitSuccess ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700',
-            ]"
-          >
+        <!-- Message -->
+        <Motion v-if="submitMessage" :initial="{ opacity: 0, y: 10 }" :animate="{ opacity: 1, y: 0, transition:{duration:0.5} }">
+          <p :class="[ 'text-center text-sm mt-2 font-medium px-4 py-2 rounded-full', submitSuccess ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700', ]">
             {{ submitMessage }}
           </p>
         </Motion>
-
       </form>
     </Motion>
   </div>
 </section>
+
 </template>
