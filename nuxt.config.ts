@@ -56,8 +56,17 @@ export default defineNuxtConfig({
           property: "og:image",
           content: "https://farobiy-red.vercel.app/hero.webp",
         },
+        {
+          property: "og:image:secure_url",
+          content: "https://farobiy-red.vercel.app/hero.webp",
+        },
+        { property: "og:image:type", content: "image/webp" },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        { property: "og:image:alt", content: "Farobiy International School" },
         { property: "og:type", content: "website" },
         { property: "og:url", content: "https://farobiy-red.vercel.app/" },
+        { property: "og:site_name", content: "Farobiy International School" },
 
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: "Farobiy International School" },
