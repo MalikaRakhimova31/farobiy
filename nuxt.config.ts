@@ -40,39 +40,25 @@ export default defineNuxtConfig({
     head: {
       title: "Farobiy International School",
       meta: [
-        {
-          name: "description",
-          content:
-            "Farobiy International School zamonaviy ta'lim va yuqori sifatli bilimni ta'minlaydi. Bizning maqsadimiz – har bir o'quvchini kelajakda muvaffaqiyatli yetakchi qilish.",
-        },
 
-      
         { property: "og:title", content: "Farobiy International School" },
-        {
-          property: "og:description",
-          content:
-            "Farobiy International School zamonaviy ta'lim va yuqori sifatli bilimni ta'minlaydi. Bizning maqsadimiz – har bir o'quvchini kelajakda muvaffaqiyatli yetakchi qilish.",
-        },
-        {
-          property: "og:image",
-          content: "https://farobiy-red.vercel.app/og-image.jpg",
-        },
+        { property: "og:description", content: "Farobiy International School zamonaviy ta'lim va yuqori sifatli bilimni ta'minlaydi. Bizning maqsadimiz – har bir o'quvchini kelajakda muvaffaqiyatli yetakchi qilish." },
+        { property: "og:image", content: "/hero.webp" },
         { property: "og:type", content: "website" },
         { property: "og:url", content: "https://farobiy-red.vercel.app/" },
 
-     
+
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: "Farobiy International School" },
-        {
-          name: "twitter:description",
-          content:
-            "Farobiy International School zamonaviy ta'lim va yuqori sifatli bilimni ta'minlaydi. Bizning maqsadimiz – har bir o'quvchini kelajakda muvaffaqiyatli yetakchi qilish.",
-        },
-        {
-          name: "twitter:image",
-          content: "https://farobiy-red.vercel.app/og-image.jpg",
-        },
+        { name: "twitter:description", content: "Farobiy International School zamonaviy ta'lim va yuqori sifatli bilimni ta'minlaydi. Bizning maqsadimiz – har bir o'quvchini kelajakda muvaffaqiyatli yetakchi qilish." },
+        { name: "twitter:image", content: "/hero.webp" },
+
+
+        { name: "telegram:title", content: "Farobiy International School" },
+        { name: "telegram:description", content: "Farobiy International School zamonaviy ta'lim va yuqori sifatli bilimni ta'minlaydi. Bizning maqsadimiz – har bir o'quvchini kelajakda muvaffaqiyatli yetakchi qilish." },
+        { name: "telegram:image", content: "/hero.webp" },
       ],
+      
     },
   },
 
