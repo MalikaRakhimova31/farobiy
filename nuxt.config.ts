@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: false },
 
-  modules: ["@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/i18n", "nuxt-aos"],
+  modules: ["@nuxt/image", "@nuxtjs/color-mode", "@nuxtjs/i18n"],
 
   css: ["assets/css/main.css"],
   vite: {
