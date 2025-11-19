@@ -1,0 +1,100 @@
+<script setup lang="ts">
+const teamMembers = [
+  {
+    name: "Azamat Tursunov",
+    image:
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=600&fit=crop",
+  },
+  {
+    name: "Laylo Karimova",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=600&fit=crop",
+  },
+  {
+    name: "Javohir Alimov",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
+  },
+  {
+    name: "Nilufar Rahimova",
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=600&fit=crop",
+  },
+  {
+    name: "Sardor Umarov",
+    image:
+      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=600&fit=crop",
+  },
+];
+</script>
+<template>
+  <section id="team" class="dark:bg-dark-500 bg-white py-20">
+    <div class="container">
+      <div
+        class="mb-12 text-center lg:mb-16"
+        data-aos="fade-up"
+        data-aos-duration="600"
+        data-aos-delay="0"
+        data-aos-easing="ease-out-cubic"
+      >
+        <h2
+          class="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl lg:text-5xl dark:text-white"
+        >
+          {{ $t("team.title") }}
+        </h2>
+        <p class="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-400">
+          {{ $t("team.subtitle") }}
+        </p>
+      </div>
+
+      <div
+        class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 xl:grid-cols-5"
+      >
+        <div
+          v-for="(member, index) in teamMembers"
+          :key="index"
+          class="group"
+          data-aos="fade-up"
+          :data-aos-delay="index * 150"
+          data-aos-duration="600"
+          data-aos-easing="ease-out-cubic"
+          data-aos-anchor-placement="center-bottom"
+        >
+          <div
+            class="relative mb-4 overflow-hidden rounded-2xl shadow-md transition-all duration-300 hover:shadow-xl"
+          >
+            <NuxtImg
+              :src="member.image"
+              :alt="member.name"
+              class="h-72 w-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+              loading="lazy"
+            />
+            <div
+              class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+            ></div>
+          </div>
+          <div class="text-center">
+            <h3
+              class="mb-1 text-lg font-bold text-gray-900 transition-colors duration-200 dark:text-white"
+            >
+              {{ member.name }}
+            </h3>
+            <p
+              class="text-secondary-900 text-sm font-medium transition-colors duration-200 dark:text-[#00c878]"
+            >
+              {{ $t(`team.position${index + 1}`) }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 text-center">
+        <button
+          class="border-secondary-900 text-secondary-900 hover:bg-secondary-900 rounded-full border-2 px-8 py-3 font-semibold transition-all duration-300 hover:scale-105 hover:text-white hover:shadow-lg active:scale-95 dark:border-[#00c878] dark:text-[#00c878] dark:hover:bg-[#00c878]"
+        >
+          {{ $t("team.viewAll") }}
+        </button>
+      </div>
+    </div>
+  </section>
+</template>
